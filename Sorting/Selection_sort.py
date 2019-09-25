@@ -2,7 +2,6 @@ import time
 import os
 
 os.chdir(r'C:/Users/Pollam/Desktop/CodeBase/Sorting')
-print(os.getcwd())
 string=list(open('test.txt'))
 l=list(map(int,string[0].split()))
 start=time.time()
