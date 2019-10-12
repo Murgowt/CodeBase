@@ -1,6 +1,6 @@
 import time
 import os
-
+#Selection Sort has time complexity of O(n*n)
 os.chdir(r'C:/Users/Pollam/Desktop/CodeBase/Sorting')
 string=list(open('test.txt'))
 l=list(map(int,string[0].split()))
