@@ -36,3 +36,18 @@ def dfib(n):
 m={}
 n=int(input('Enter the Value of n: '))
 print(dfib(n-1))
+
+
+#Bottom Up DP algorithm--Linrear Time(Infact less time as no need of function calls)
+def bufib(n):
+    fib=[]
+    for k in range(n):
+        if(k==1 or k==0):
+            f=1
+        else:
+            f=fib[k-1]+fib[k-2]
+        fib[k]=f
+    return fib[n]
+
+n=int(input('Enter the Value of n: '))
+print(dfib(n-1))
