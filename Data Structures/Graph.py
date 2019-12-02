@@ -1,3 +1,4 @@
+#Implemented using an Adjacency Graph Concept.
 class graph:
     def __init__(self):
         self.vertices=int(input("Enter number of Vertices: "))
