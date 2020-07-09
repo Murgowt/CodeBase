@@ -43,11 +43,26 @@ class Tree:
             self.inorder(root.left)
             print(root.data,end=" ")
             self.inorder(root.right)
+    def postorder(self,root):
+        if(root==None):
+            return
+        else:
+            self.postorder(root.left)
+            self.postorder(root.right)
+            print(root.data,end=" ")
+    def preorder(self,root):
+        if(root==None):
+            return
+        else:
+            print(root.data,end=" ")
+            self.preorder(root.left)
+            self.preorder(root.right)
 tree=Tree()
 if(tree.Root.data==None):
     print("true")
-switcher={1:tree.CreateNewNode,2:tree.inorder,3:tree.fpass}
+switcher={1:tree.CreateNewNode,2:tree.inorder,3:tree.preorder,4:tree.postorder,5:tree.fpass}
 ch=0
-while(ch!=3):
-    ch=int(input("Enter your Choice:\n1.Insert New Value\n2.INorder Traversal\n3.Exit\nEnter Your Choice:  "))
+while(ch!=5):
+    print("\n")
+    ch=int(input("Enter your Choice:\n1.Insert New Value\n2.INorder Traversal\n3.Pre-Order Traversal\n4.Post-Order Traversal\n5.Exit\nEnter Your Choice:  "))
     switcher.get(ch,"Invalid Choice")(tree.Root)
