@@ -11,4 +11,4 @@ def binomial(n,k):
 
 n=int(input())
 k=int(input())
-binomial(4,2)
+binomial(n,k)
