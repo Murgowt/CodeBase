@@ -1,3 +1,6 @@
+# Number of Recurcive Function Calls Without Memoization=52
+# Number of Recurcive Function Calls With Memoization =24
+
 def KnackSack(val,wgt,n,W):
 	global dp,count
 	
@@ -21,7 +24,7 @@ def KnackSack(val,wgt,n,W):
 val=[20,5,10,40,15,25]
 wgt=[1,2,3,8,7,4]
 n=6
-count=0
+count=0           #To count the number of times the recurcive Function is being caled
 W=10
 dp=[[-1 for i in range(W+1)] for i in range(n+1)]
-print("Maximum Profit: ",KnackSack(val,wgt,n,W))
+print("Maximum Profit: ",KnackSack(val,wgt,n,W)) 
