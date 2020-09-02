@@ -21,6 +21,28 @@ def KnackSack(val,wgt,n,W):
 		return(dp[n][W])
 
 
+def PrintDP(dp):
+	for i in dp:
+		for j in i:
+			print(j,end='\t')
+		print("")
+		
+# Top-Down  Approach
+def TopDown(wgt,val,W,n):
+	dp=[[-1 for i in range(W+1)]for j in range(n+1)]
+	for i in range(W+1):
+		dp[0][i]=0
+	for i in range(n+1):
+		dp[i][0]=0
+	
+	for i in range(1,n+1):
+		for j in range(1,W+1):
+			if(wgt[i-1]>j):
+				dp[i][j]=dp[i-1][j]
+			else:
+				dp[i][j]=max(dp[i-1][j],dp[i-1][j-wgt[i-1]]+val[i-1])
+	PrintDP(dp)
+
 val=[20,5,10,40,15,25]
 wgt=[1,2,3,8,7,4]
 n=6
