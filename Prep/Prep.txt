@@ -1,1 +1,23 @@
 This is the folder for prepping fro the upcoming challenges i'll be facing down the road in an year's time. All the Best to me :)
+
+1. Dynammic Programming
+2. Trees
+3. Graphs
+
+4. Sorting
+4. Searching
+
+6.Heaps
+6. Sliding Window Protocol
+
+8.Divide and Conquer
+8.Greedy
+
+10.Tries
+
+11.Stack
+11.Queues
+11.Linked Linked
+
+14.BackTracking
+15.Segment Trees
