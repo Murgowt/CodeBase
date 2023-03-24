@@ -3,11 +3,10 @@ import javax.swing.JOptionPane;
 public class program1 {
     public static void getIntegerInput(boolean lowerLimitFlag, int lowerLimit, boolean upperLimitFlag,
     int upperLimit, String prompt, String errorMsg){
-        JFrame frame = new JFrame();
         while(true){
             boolean flag = true;
             try{
-                String inputString = JOptionPane.showInputDialog(frame, prompt);
+                String inputString = JOptionPane.showInputDialog(null, prompt);
                 Integer input = Integer.parseInt(inputString);
                 if(lowerLimitFlag && input<lowerLimit ){
                     flag = false;
