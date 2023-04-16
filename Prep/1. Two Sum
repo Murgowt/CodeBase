@@ -1,0 +1,8 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        twoSum = {}
+        for i in range(0,len(nums)):
+            if(twoSum.get(target-nums[i]) is None):
+                twoSum[nums[i]]= i
+            else:
+                return [i,twoSum[target-nums[i]]]
