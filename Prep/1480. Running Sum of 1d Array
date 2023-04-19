@@ -1,0 +1,9 @@
+class Solution(object):
+    def runningSum(self, nums):
+        answer = []
+        csum = 0
+        for num in nums:
+            csum += num
+            answer.append(csum)
+        return answer
+    
