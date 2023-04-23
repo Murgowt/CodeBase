@@ -1,0 +1,8 @@
+class Solution(object):
+    def maximumWealth(self, accounts):
+        rich = 0
+        for money in accounts:
+            amount = sum(money)
+            if(amount>rich):
+                rich = amount
+        return rich
