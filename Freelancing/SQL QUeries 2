@@ -1,0 +1,43 @@
+1.List tenants who were responsible for damages in 2022. In the list include the tenant number, tenant name (in the form of ‘Title. 
+  Givenname Familyname’), the number of damages and total cost of damages (in the form of $9990.99). 
+  Show the most expensive total cost of damages first. If two tenants have the same total cost of damages, order them based on their 
+  tenant number.
+
+2.For each tenant who has rented the same property in Tasmania more than once, list the number rental agreements for each property they have 
+rented more than once. In the list include the tenant number, tenant name (in the form of ‘Title. Givenname Familyname’), property number,
+property address, and the number of rental agreements for that property. Order the output based on the tenant number.
+
+
+SQL QUERY -1
+
+SELECT  t.tenant_no, t.tenant_title || '. ' || t.tenant_givename || ' ' || t.tenant_famname as "Tenant Name", count(d.dam_cost) "Number of Damages", sum(d.dam_cost) as "Total cost" 
+FROM damage d, rent r, tenant t
+where d.rent_agreement_no = r.rent_agreement_no
+    and r.tenant_no = t.tenant_no
+	and  EXTRACT(YEAR FROM  dam_datetime)= 2022
+group by t.tenant_no, t.tenant_title || '. ' || t.tenant_givename || ' ' || t.tenant_famname
+order by sum(d.dam_cost) desc,tenant_no;
+
+
+
+
+
+SQL Query -2 
+
+select t.tenant_no,  t.tenant_title || '. ' || t.tenant_givename || ' ' || t.tenant_famname as "Tenant Name", p.prop_no, p.prop_address , count(r.rent_agreement_no)
+from property p, rent r, tenant t
+where p.prop_no = r.prop_no
+	and t.tenant_no = r.tenant_no
+    and p.prop_address like '%Tasmania%'
+    
+group by t.tenant_no,  t.tenant_title || '. ' || t.tenant_givename || ' ' || t.tenant_famname, p.prop_no, p.prop_address
+    having count(r.rent_agreement_no) >1
+order by t.tenant_no;
+
+
+
+
+
+
+
+
