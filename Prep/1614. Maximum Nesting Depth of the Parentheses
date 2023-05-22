@@ -1,0 +1,17 @@
+class Solution(object):
+    def maxDepth(self, s):
+        stack = []
+        size = 0
+        closing = [')',']','}']
+        opening = ['(','[','{']
+        maxlen=0
+        for i in s:
+            if(i in closing):
+                stack.pop()
+                size-=1
+            if(i in opening):
+                stack.append(i)
+                size+=1
+            if(size>maxlen):
+                maxlen = size
+        return maxlen
