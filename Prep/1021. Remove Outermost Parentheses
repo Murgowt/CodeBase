@@ -1,0 +1,20 @@
+class Solution(object):
+    def removeOuterParentheses(self, s):
+        string = []
+        omp = -1
+        stack=[]
+        for j in range(len(s)):
+            i = s[j]
+            if(i=='('):
+                string.append(i)
+                if(len(stack)==0):
+                    omp = len(string)-1
+                stack.append(i)
+            else:
+                stack.pop()
+                if(len(stack)==0):
+                    string.pop(omp)
+                else:
+                    string.append(i)
+        return ''.join(string)
+                
