@@ -6,4 +6,5 @@ class Solution(object):
         while(x>answer):
             answer = answer * 10 + x % 10
             x = x // 10 
+        print("10")
         return x==answer or x == answer //10
