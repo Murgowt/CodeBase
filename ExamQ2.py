@@ -8,7 +8,7 @@ speed = distance/time
 #Comparing the speed with the 60mph speed limit
 if(speed < 60):
     #if the speed is less than the limit
-    print("Below the speed limit!")
+    print("Below the speed limit!!")
 elif(speed == 60 ):
     #if the speed equals the limit
     print("At the speed limit!")
