@@ -1,0 +1,17 @@
+import heapq as hq
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        freq={}
+        for i in nums:
+            if(freq.get(i) is  None):
+                freq[i]=0
+            freq[i]+=1
+        heap = []
+        for key,value in freq.items():
+            hq.heappush(heap,[value,key])
+            if(len(heap)>k):
+                hq.heappop(heap)
+        ans=[]
+        for item in heap:
+            ans.append(item[1])        
+        return ans
