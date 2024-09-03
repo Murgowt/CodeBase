@@ -1,0 +1,64 @@
+def enough(word,avai):
+    freq={}
+    for i in word:
+        if(freq.get(i) is None):
+            freq[i]=0
+        freq[i]+=1
+    for i in freq.keys():
+        if(avai.get(i) is None or avai[i]<freq[i]):
+            return False
+    return True
+
+def cut(word,avai):
+    freq={}
+    for i in word:
+        if(freq.get(i) is None):
+            freq[i]=0
+        freq[i]+=1
+    for i in freq.keys():
+        avai[i]= avai[i] - freq[i]
+
+def add(word,avai):
+    freq={}
+    for i in word:
+        if(freq.get(i) is None):
+            freq[i]=0
+        freq[i]+=1
+    for i in freq.keys():
+        avai[i]= avai[i] + freq[i]
+
+def calculateScore(scores,word):
+    score = 0
+    for i in word:
+        score+= scores[i]
+    return score
+
+def backtrack(scores,avai,words):
+    if(len(words)==0):
+        return 0
+    
+    for word in words:
+        count = 0
+        if(enough(word,avai)):
+            cut(word,avai)
+            count = calculateScore(scores,word)+ backtrack(scores,avai,words[1:])
+            add(word,avai)
+        dontCount = backtrack(scores,avai,words[1:])
+        return max(count,dontCount)
+
+
+
+class Solution:
+    def maxScoreWords(self, words: List[str], letters: List[str], score: List[int]) -> int:
+        scores={}
+        asci = 97
+        for i in score:
+            scores[chr(asci)]=i
+            asci+=1
+        avai = {}
+        
+        for i in letters:
+            if(avai.get(i) is None):
+                avai[i]=0
+            avai[i]+=1
+        return backtrack(scores,avai,words)
