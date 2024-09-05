@@ -1,0 +1,48 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+def formatting(traversal):
+    level = 0
+    tree = []
+    i=0
+    while(i<len(traversal)):
+        while(traversal[i]=='-'):
+            level+=1
+            i+=1
+        else:
+            num = ''
+            while(i<len(traversal) and traversal[i].isdigit()):
+                num+=traversal[i]
+                i+=1
+            tree.append([level,num])
+            level=0
+           
+    return tree
+
+def construct(trav,level,root):
+    if(len(trav)==0):
+        return 
+    while(len(trav)>0 and trav[0][0]==level+1):
+        node = trav.pop(0)
+        if(root.left is None):
+            root.left = TreeNode(node[1])
+            construct(trav,level+1,root.left)
+        else:
+            root.right = TreeNode(node[1])
+            construct(trav,level+1,root.right)
+    
+    return
+
+class Solution:
+    def recoverFromPreorder(self, traversal: str) -> Optional[TreeNode]:
+        trav = formatting(traversal)
+        # print(trav)
+        if(len(trav)==0):
+            return None
+        rootVal = trav.pop(0)
+        root = TreeNode(rootVal[1])
+        construct(trav,0,root)
+        return root
